@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -37,13 +38,13 @@ public class LoginPannel extends JFrame {
 	 */
 	public LoginPannel() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 605, 388);
+		setBounds(100, 100, 399, 347);
 		formPan = new JPanel();
 		formPan.setBackground(UIManager.getColor("Tree.textBackground"));
 		setTitle("Login");
 		formPan.setLayout(null);
 		panel.setBackground(UIManager.getColor("Tree.textBackground"));
-		panel.setBounds(139, 116, 318, 169);
+		panel.setBounds(32, 116, 318, 169);
 		
 		formPan.add(panel);
 		panel.setLayout(null);
@@ -67,18 +68,23 @@ public class LoginPannel extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.decode("#005297"));
-		panel_1.setBounds(0, 0, 589, 115);
+		panel_1.setBounds(0, 0, 383, 92);
 		formPan.add(panel_1);
 		panel_1.setLayout(null);
 		
 		JLabel loginTitle = new JLabel("<html><body>Ecole Nationale des Sciences<br>Appliquées d'Al Hoceima</body></html>");
 		loginTitle.setForeground(UIManager.getColor("PasswordField.background"));
-		loginTitle.setFont(new Font("Courier New", Font.ITALIC, 25));
-		loginTitle.setBounds(152, 11, 466, 95);
+		loginTitle.setFont(new Font("Courier New", Font.ITALIC, 15));
+		loginTitle.setBounds(91, 11, 282, 58);
 		panel_1.add(loginTitle);
 		
-		logoLabel.setBounds(0, 0, 151, 115);
-		ImageIcon icon = new ImageIcon(URL_RESOURCES + "logo-ensah.png");
+		logoLabel.setBounds(17, 11, 64, 64);
+		
+		ImageIcon icon = new ImageIcon(URL_RESOURCES + "logo-ensah.png"); // load the image to a imageIcon
+		Image image = icon.getImage(); // transform it 
+		Image newimg = image.getScaledInstance(logoLabel.getWidth(), logoLabel.getHeight(), java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		icon = new ImageIcon(newimg);  // transform it back
+		
 		
 		logoLabel.setIcon(icon);
 		panel_1.add(logoLabel);
