@@ -18,6 +18,8 @@ import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LoginPannel extends JFrame {
 
@@ -61,6 +63,22 @@ public class LoginPannel extends JFrame {
 		btn.setBorder(UIManager.getBorder("MenuBar.border"));
 		btn.setBackground(UIManager.getColor("PasswordField.selectionBackground"));
 		btn.setBounds(209, 135, 100, 23);
+		
+		
+		//////////////////////////////////////////////////////////////////////////////
+		////					Login Event Listener for Button					  ////
+		//////////////////////////////////////////////////////////////////////////////
+		
+		btn.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		
+		
+		
 		
 		panel.add(btn);
 		
