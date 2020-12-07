@@ -6,20 +6,29 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 
+import javax.security.auth.login.LoginException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JWindow;
 import javax.swing.border.EmptyBorder;
+
+import com.bll.LoginManager;
+import com.bll.LoginManagerImpl;
+import com.bo.Compte;
+
 import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 
 public class LoginPannel extends JFrame {
 
@@ -72,7 +81,38 @@ public class LoginPannel extends JFrame {
 		btn.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+				LoginManager loginManager = new LoginManagerImpl();
+		
+				Compte compte = new Compte(userF.getText(), new String(pwF.getPassword()) );
 				
+				try {
+					if(loginManager.login(compte)) {
+						dispose();
+//						JWindow w = new WelcomeWind();
+//						w.setVisible(true);
+//						try
+//						{
+//						    Thread.sleep(2000);
+//						}
+//						catch(InterruptedException ex)
+//						{
+//						    Thread.currentThread().interrupt();
+//						}
+//						w.setVisible(false);
+						
+						JFrame f = new AppMainFrame();
+						f.setVisible(true);
+						
+					}else {
+						throw new LoginException("Mot de passe incorrect");
+					}
+				}catch(LoginException e1){
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+					e1.printStackTrace();
+				}catch(Exception e2) {
+					JOptionPane.showMessageDialog(null, "Erreur");
+					e2.printStackTrace();
+				}
 				
 			}
 		});
