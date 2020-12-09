@@ -195,8 +195,8 @@ public class LoginPannel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-//					LoginPannel frame = new LoginPannel();
-					AppMainFrame frame = new AppMainFrame();
+					LoginPannel frame = new LoginPannel();
+//					AppMainFrame frame = new AppMainFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
