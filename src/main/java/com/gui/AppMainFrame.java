@@ -76,7 +76,7 @@ public class AppMainFrame extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				if (JOptionPane.showConfirmDialog(null, "Etes vous sure de quitter l'application", "Confirmation",
 						JOptionPane.YES_NO_OPTION) == 0) {
-					dispose();
+					System.exit(0);
 				}
 			}
 

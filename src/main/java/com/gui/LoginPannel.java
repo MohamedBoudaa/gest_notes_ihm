@@ -67,7 +67,7 @@ public class LoginPannel extends JFrame {
 			
 			public void mouseClicked(MouseEvent arg0) {
 				if(JOptionPane.showConfirmDialog(null, "Etes vous sure de quitter l'application","Confirmation",JOptionPane.YES_NO_OPTION)==0) {
-					dispose();
+					LoginPannel.this.dispose();
 				}
 			}
 			
@@ -126,7 +126,7 @@ public class LoginPannel extends JFrame {
 				
 				try {
 					if(loginManager.login(compte)) {
-						dispose();
+						LoginPannel.this.dispose();
 						
 						JFrame f = new AppMainFrame();
 						f.setVisible(true);
