@@ -39,7 +39,7 @@ public class LoginPannel extends JFrame {
 
 	private JPanel formPan;
 
-	private static final String URL_RESOURCES = new String("src/main/java/com/resources/");
+	public static final String URL_RESOURCES = new String("src/main/java/com/resources/");
 	
 	private JLabel userLab = new JLabel("Username :");
 	private JTextField userF = new JTextField();
