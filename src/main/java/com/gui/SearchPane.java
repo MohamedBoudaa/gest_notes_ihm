@@ -11,6 +11,8 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.border.TitledBorder;
+import javax.swing.plaf.TableUI;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.UIManager;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -204,6 +206,11 @@ public class SearchPane extends JPanel {
 		table.setModel(model);
 //		table.setEnabled(true);
 		table.setRowHeight(40);
+		table.putClientProperty(
+
+				   "Quaqua.Table.style", "striped"
+
+				);
 //		table.setDefaultRenderer(Object.class, new CellBtnRender());
 
 		/********************************************************************************************/

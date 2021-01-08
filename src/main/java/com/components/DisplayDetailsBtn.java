@@ -33,6 +33,7 @@ public class DisplayDetailsBtn extends ButtonColumn{
 		super(table, column);
 		
 	}
+	
 	public DisplayDetailsBtn(JTable table, int column,String cne,JPanel panel) {
 		super(table, column);
 		this.cne = cne;

@@ -33,6 +33,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.concurrent.TimeUnit;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.swing.SwingConstants;
 
 public class LoginPannel extends JFrame {
@@ -192,9 +193,11 @@ public class LoginPannel extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 //					LoginPannel frame = new LoginPannel();
 					AppMainFrame frame = new AppMainFrame();
 					frame.setVisible(true);
