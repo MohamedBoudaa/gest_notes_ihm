@@ -2,7 +2,7 @@ package com.gui;
 
 import javax.swing.JPanel;
 
-import com.bll.ImportExportManagerImpl;
+import com.bll.ImportManagerImpl;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,7 +44,7 @@ public class ImportPane extends JPanel {
 				if (result == JFileChooser.APPROVE_OPTION) {
 					File selectedFile = fileChooser.getSelectedFile();
 
-					ImportExportManagerImpl.importFromCsvFile(selectedFile.getAbsolutePath());
+					ImportManagerImpl.importFromCsvFile(selectedFile.getAbsolutePath());
 				}
 
 			}

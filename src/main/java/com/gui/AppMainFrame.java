@@ -34,7 +34,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import com.bll.ImportExportManagerImpl;
+import com.bll.ImportManagerImpl;
 
 import java.awt.SystemColor;
 
