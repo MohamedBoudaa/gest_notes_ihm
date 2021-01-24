@@ -1,44 +1,147 @@
 package com.gui;
 
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.rmi.server.ExportException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.filechooser.FileSystemView;
 
-import com.bll.SearchManagerImpl;
+import com.bll.ImportExportManagerImpl;
+import com.bll.InscriptionManagerImpl;
+import com.bo.Niveau;
 
 public class ExportPane extends JPanel {
+	
+	private JTextField Fcne;
+	private JTextField Fannee;
+	private static final InscriptionManagerImpl inscriptionManager = new InscriptionManagerImpl();
 
 	/**
 	 * Create the panel.
 	 */
 	public ExportPane() {
-
 		setSize(1003, 769);
 		setLayout(null);
 
-		
-		//Ajouter des composants graphiques
-		JPanel contentPane=new JPanel();
-		
-		JButton jButton=new JButton("Click me");
-		jButton.setBounds(200, 20, 100, 30);
-		contentPane.add( jButton);
-		JCheckBox jCheckbox=new JCheckBox("Je suis checkbox");
-		jCheckbox.setBounds(200, 60, 100, 30);
-		contentPane.add(jCheckbox);
-		JTextField jTextfield=new JTextField("Ecrire ici");
-		jTextfield.setBounds(200, 90, 100, 30);
-		contentPane.add(jTextfield);
-		setVisible(true);
-	}
+		JPanel panel = new JPanel();
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informations ",
+				TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("CheckBox.focus")));
+		panel.setBounds(143, 171, 615, 340);
+		add(panel);
+		panel.setLayout(null);
 
+		JLabel cneLabel = new JLabel("CNE");
+		cneLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		cneLabel.setBounds(36, 40, 100, 36);
+		panel.add(cneLabel);
+		
+		Fcne = new JTextField();
+		Fcne.setHorizontalAlignment(SwingConstants.CENTER);
+		Fcne.setColumns(10);
+		Fcne.setBounds(146, 41, 286, 40);
+		panel.add(Fcne);
+		
+		JLabel annee = new JLabel("Ann\u00E9e");
+		annee.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		annee.setBounds(36, 115, 100, 36);
+		panel.add(annee);
+
+		Fannee = new JTextField();
+		Fannee.setHorizontalAlignment(JTextField.CENTER);
+		Fannee.setColumns(10);
+		Fannee.setBounds(146, 116, 286, 40);
+		panel.add(Fannee);
+
+		
+		JLabel niveauLabel = new JLabel("Niveau");
+		niveauLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		niveauLabel.setBounds(36, 199, 100, 36);
+		panel.add(niveauLabel);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"CP1", "CP2", "GI1", "GI2", "GI3", "GC1", "GC2",
+				"GC3", "GEE1", "GEE2", "GEE3", "GEER1", "GEER2", "GEER3" }));
+		comboBox.setBounds(146, 198, 286, 37);
+		panel.add(comboBox);
+		
+		JButton export = new JButton("Exporter");
+		export.setBounds(434, 287, 154, 42);
+		panel.add(export);
+		
+			
+		export.addActionListener(new ActionListener() {
+			final JLabel label = new JLabel();
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				boolean filled = true;
+				String cne = null;
+				String annee = null;
+				Niveau niveau = inscriptionManager.getNiveauByTitle((String) comboBox.getSelectedItem());
+				
+				if (!Fcne.getText().equals("")) {
+					cne = Fcne.getText();
+				}else {
+					filled = false;
+				}if (!Fannee.getText().equals("")) {
+					annee = Fannee.getText();
+				}else {
+					filled = false;
+				}				
+				if(filled == false) {
+					JOptionPane.showMessageDialog(null, "Veuillez remplir tous les champs !");
+				}else {
+					
+					try {
+						File file=ImportExportManagerImpl.exportBulltinToPDF(cne, Integer.parseInt(annee), niveau.getTitle());
+						
+						JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+				        jfc.setDialogTitle("Choose a directory to save your file: ");
+				        jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+				        int returnValue = jfc.showSaveDialog(null);
+				        if (returnValue == JFileChooser.APPROVE_OPTION) {
+				            if (jfc.getSelectedFile().isDirectory()) {
+				                File str=jfc.getSelectedFile();
+				                //
+				                String sourcePath=file.getAbsolutePath();
+				                String targetPath=str.getPath()+File.separator+file.getName();
+				                Files.move(Paths.get(sourcePath), Paths.get(targetPath), StandardCopyOption.REPLACE_EXISTING);
+				                //String dst=str.getPath();
+				                //System.out.println(dst);
+				                
+				            }
+				           
+					     }
+				    } catch (ExportException e1) {
+						JOptionPane.showMessageDialog(null,"erreur : "+ e1.getMessage());
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+				}
+			}
+		});
+
+		setVisible(false);
+	}
 }
