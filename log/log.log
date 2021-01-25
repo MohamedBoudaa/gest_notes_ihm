@@ -218,3 +218,4 @@ line 1:210: expecting EOF, found ')'
 	at java.awt.EventDispatchThread.run(Unknown Source)
 2021-01-24 13:58:31,028 : ERROR [SqlExceptionHelper] :  Could not connect to address=(host=localhost)(port=3306)(type=master) : Socket fail to connect to host:localhost, port:3306. Connection refused: connect
 2021-01-24 22:31:59,229 : ERROR [SqlExceptionHelper] :  Could not connect to address=(host=localhost)(port=3306)(type=master) : Socket fail to connect to host:localhost, port:3306. Connection refused: connect
+2021-01-25 11:53:18,673 : ERROR [SqlExceptionHelper] :  Could not connect to address=(host=localhost)(port=3306)(type=master) : Socket fail to connect to host:localhost, port:3306. Connection refused: connect
