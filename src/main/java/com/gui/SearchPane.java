@@ -108,7 +108,6 @@ public class SearchPane extends JPanel {
 		String[] value= new String[to-from+1];
 		for(int i = from; i<to+1;i++) {
 			value[i] = table.getModel().getValueAt(row, i).toString();
-			System.out.println(value[i]);
 		}
 		return value;
 	}
@@ -163,9 +162,35 @@ public class SearchPane extends JPanel {
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { null, "CP1", "CP2", "GI1", "GI2", "GI3", "GC1", "GC2",
 				"GC3", "GEE1", "GEE2", "GEE3", "GEER1", "GEER2", "GEER3" }));
-		comboBox.setBounds(108, 173, 415, 37);
+		comboBox.setBounds(108, 173, 249, 37);
 		panSearch.add(comboBox);
 		
+		JFormattedTextField Fyear = new JFormattedTextField();
+		Fyear.setBounds(435, 173, 88, 37);
+		panSearch.add(Fyear);
+		
+		JLabel lblYear = new JLabel("Ann\u00E9e");
+		lblYear.setBounds(367, 173, 58, 37);
+		panSearch.add(lblYear);
+		
+		JButton helpBtn = new JButton("Aide");
+		helpBtn.setBounds(10, 247, 69, 23);
+		panSearch.add(helpBtn);
+		
+		helpBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String message = "Remplir les champs pour effectuer une recherche multicritère.\n"
+						+ "Laisser vide pour ignorer.\n"
+						+ "Exemple : si vous laisser Niveau vide, vous aller avoir les étudiants"
+						+ " de tous les niveaux.\n"
+						+ "De meme si vous laisser année vide, vous aller avoir les étudiants inscrit"
+						+ " au niveau séléctionné à n'importe quelle année";
+				
+				JOptionPane.showMessageDialog(null, message);
+			}
+		});
 		
 
 		panel = new JPanel();
@@ -225,8 +250,12 @@ public class SearchPane extends JPanel {
 				String scndName = null;
 				String cne = null;
 				Long niveau = null;
+				Integer year = null;
 				if (!Fnom.getText().equals("")) {
 					name = Fnom.getText();
+				}
+				if (!Fyear.getText().equals("")) {
+					year = Integer.parseInt(Fyear.getText().trim());
 				}
 				if (!Fprenom.getText().equals("")) {
 					scndName = Fprenom.getText();
@@ -239,7 +268,7 @@ public class SearchPane extends JPanel {
 				
 				
 				
-				searchList = searchManager.searchStudent(name, scndName, cne, niveau);
+				searchList = searchManager.searchStudent(name, scndName, cne, niveau ,year);
 
 				if (searchList.size() > 0) {
 					int rows = model.getRowCount(); 
@@ -252,7 +281,7 @@ public class SearchPane extends JPanel {
 						row[0] = searchList.get(i).get("cne");
 						row[1] = searchList.get(i).get("firstName");
 						row[2] = searchList.get(i).get("secondName");
-						row[3] = searchList.get(i).get("niveau");
+						row[3] = searchList.get(i).get("niv");
 						row[4] = searchList.get(i).get("cin");
 						row[5] = "Afficher";
 						new DisplayDetailsBtn(table, 5) {

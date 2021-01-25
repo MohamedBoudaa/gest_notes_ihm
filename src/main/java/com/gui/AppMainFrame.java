@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
@@ -35,6 +36,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import com.bll.ImportManagerImpl;
+import com.bll.SearchManagerImpl;
+import com.bo.Module;
 
 import java.awt.SystemColor;
 
@@ -42,13 +45,15 @@ public class AppMainFrame extends JFrame {
 
 	private JPanel contentPane;
 	private static final String URL_RESOURCES = new String("src/main/java/com/resources/");
-
+	private static final SearchManagerImpl searchManager = new SearchManagerImpl();
 	private HomePane homePane;
 	private SearchPane searchPane;
 	private AddStudentPane addStudentPane;
 	private ImportPane importPane;
 	private ExportPane exportPane;
 
+	
+	
 	/**
 	 * Create the frame.
 	 */
