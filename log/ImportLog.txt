@@ -1,0 +1,22 @@
+Fichier selectionne : C:\Users\Mohamed\Desktop\sup.csv
+Lecture depuis le fichier ....
+*************Checking module and niveau .... *************
+*************Checking module and niveau has been done successfully ! *************
+*************CHECKING STUDENTS*************
+Database : S130414250 --  File : S130414250
+Database : S130414251 --  File : S130414251
+Database : S130414252 --  File : S130414252
+Database : S130414253 --  File : S130414253
+Database : S130414254 --  File : S130414254
+Database : S130414257 --  File : S130414257
+**********Checking students list has been done successfully !************
+Verification avec succès !!
+ Debut de l'importation des notes...
+Etudiant Boudaa note : 4
+Etudiant Senhaji note : 2
+Etudiant Bouddoufi note : 2
+Etudiant Andalousi note : 2
+Etudiant S130414254 note : Deja valide
+Etudiant Azarkan note : 2
+Etudiant Aoussar note : 9
+Importation des notes avec succès

@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -27,10 +28,14 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JTextPane;
 
 public class ImportPane extends JPanel {
-
+	
 	private static final SearchManagerImpl searchManager = new SearchManagerImpl();
+	private static final ImportManagerImpl importManager = new ImportManagerImpl();
+
 	private JTable table;
 	private List<Module> allModules = searchManager.getModulesByNiveau(null); // get all modules
 	private JTextField selectedModule;
@@ -47,7 +52,7 @@ public class ImportPane extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "Importation des notes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(43, 26, 508, 614);
+		panel.setBounds(10, 26, 511, 554);
 		add(panel);
 		panel.setLayout(null);
 		
@@ -157,7 +162,7 @@ public class ImportPane extends JPanel {
 		selectedModule.setColumns(10);
 		
 		JButton importBtn = new JButton("Importer");
-		importBtn.setBounds(357, 556, 126, 34);
+		importBtn.setBounds(357, 496, 126, 34);
 		panel.add(importBtn);
 		
 		textField_1 = new JTextField();
@@ -180,6 +185,36 @@ public class ImportPane extends JPanel {
 		comboBox.setBounds(192, 439, 291, 36);
 		comboBox.setSelectedItem(years[12]);
 		panel.add(comboBox);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(null, "Guide d'utilisation", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_1.setBounds(550, 26, 443, 554);
+		add(panel_1);
+		panel_1.setLayout(null);
+		
+		JTextPane guideTextPane = new JTextPane();
+		guideTextPane.setText("Bienvenue dans le guide d'utilisation de l'outil d'importation des notes.\r\n\r\n1-Type du fichier : \r\n\r\n l'importation des notes se fait \u00E0 partir d'un fichier .csv\r\n\r\n2-Syntaxe :\r\n\r\n les donn\u00E9es dans le fichier doivent avoir la forme suivate :\r\n\r\nCNE_Etudiant,note\r\nCNE_Etudiant2,note2\r\n.. , ..\r\n\r\nle fichier doit contenir tous les \u00E9tudiants inscrits au module ainsi que tous les \u00E9tudiants du niveau concern\u00E9. \r\n\r\nSi un \u00E9tudiant est ajourn\u00E9 mais a d\u00E9j\u00E0 valid\u00E9 le module, il doit etre pr\u00E9sent dans la liste et \u00E0 la place de la note on doit y mettre le caract\u00E8re : #\r\n\r\nLes \u00E9tudiant ajourn\u00E9s ayant des modules supplimentaire d'un autre niveau\r\ndoivent etre \u00E0 la fin de la liste et leur CNE doit commencer par # comme suivant\r\n\r\n#CNE_Etudiant,note\r\n\r\n4- Exemple : \r\n\r\nS130414250,16.15\r\nZ158020165,13.50\r\nE195198751,17.00\r\nS166554457,#            ----> cet \u00E9tudiant a d\u00E9j\u00E0 valid\u00E9 le module\r\n#S101048247,12.05   ----> cet \u00E9tudiant est ajourn\u00E9 et a ce module comme module \r\n                                            supplimentaire");
+		guideTextPane.setBounds(10, 26, 423, 517);
+		guideTextPane.setEditable(false);
+		guideTextPane.setOpaque(false);
+		guideTextPane.setBackground(new Color(0,0,0,0));
+		panel_1.add(guideTextPane);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new TitledBorder(null, "Log", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_3.setBounds(10, 591, 983, 167);
+		add(panel_3);
+		panel_3.setLayout(null);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 26, 963, 130);
+		panel_3.add(scrollPane_1);
+		
+		JTextPane textPane = new JTextPane();
+		scrollPane_1.setViewportView(textPane);
+		textPane.setEditable(false);
+		textPane.setOpaque(false);
+		textPane.setBackground(new Color(0,0,0,0));
 		
 		
 		
@@ -213,7 +248,14 @@ public class ImportPane extends JPanel {
 				}
 				if(selectedFile != null) {
 					
-					ImportManagerImpl.importNotesFromCsv(selectedFile,niveau,module,year);
+					importManager.importNotesFromCsv(selectedFile,niveau,module,year);
+					try {
+						String content = importManager.getImportLog();
+						textPane.setText(content);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}else {
 					JOptionPane.showMessageDialog(null, "Veuillez choisir un fichier !");
 					return ;
