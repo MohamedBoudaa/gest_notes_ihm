@@ -51,6 +51,7 @@ public class AppMainFrame extends JFrame {
 	private AddStudentPane addStudentPane;
 	private ImportPane importPane;
 	private ExportPane exportPane;
+	private MoyennesPane moyennesPane;
 
 	
 	
@@ -114,9 +115,12 @@ public class AppMainFrame extends JFrame {
 		panel_1.add(addStudentPane);
 		importPane = new ImportPane();
 		panel_1.add(importPane);
+		moyennesPane = new MoyennesPane();
+		panel_1.add(moyennesPane);
 		exportPane = new ExportPane();
 		panel_1.add(exportPane);
-
+		
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 72, 141));
 		panel.setBounds(2, 2, 241, 796);
@@ -209,6 +213,25 @@ public class AppMainFrame extends JFrame {
 		lblImporter.setBounds(59, 11, 172, 47);
 		panel_3_3.add(lblImporter);
 
+		JPanel panel_3_3_2 = new JPanel();
+		panel_3_3_2.setLayout(null);
+		panel_3_3_2.addMouseListener(new PanelBtnMouseAdpt(panel_3_3_2) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				menuClicked(moyennesPane);
+				
+			}
+		});
+		panel_3_3_2.setBackground(new Color(0, 82, 151));
+		panel_3_3_2.setBounds(0, 475, 241, 69);
+		panel.add(panel_3_3_2);
+
+		JLabel lblcalculerMoyennes = new JLabel("Calculer moyennes\r\n");
+		lblcalculerMoyennes.setForeground(Color.WHITE);
+		lblcalculerMoyennes.setFont(new Font("Dialog", Font.BOLD, 15));
+		lblcalculerMoyennes.setBounds(59, 11, 172, 47);
+		panel_3_3_2.add(lblcalculerMoyennes);
+		
 		JPanel panel_3_3_1 = new JPanel();
 		panel_3_3_1.setLayout(null);
 		panel_3_3_1.addMouseListener(new PanelBtnMouseAdpt(panel_3_3_1) {
@@ -220,7 +243,7 @@ public class AppMainFrame extends JFrame {
 			}
 		});
 		panel_3_3_1.setBackground(new Color(0, 82, 151));
-		panel_3_3_1.setBounds(0, 475, 241, 69);
+		panel_3_3_1.setBounds(0, 545, 241, 69);
 		panel.add(panel_3_3_1);
 
 		JLabel lblExporter = new JLabel("Exporter\r\n");
@@ -228,7 +251,7 @@ public class AppMainFrame extends JFrame {
 		lblExporter.setFont(new Font("Dialog", Font.BOLD, 15));
 		lblExporter.setBounds(59, 11, 172, 47);
 		panel_3_3_1.add(lblExporter);
-
+		
 		JPanel panel_3_3_1_1 = new JPanel();
 		panel_3_3_1_1.setLayout(null);
 		panel_3_3_1_1.addMouseListener(new PanelBtnMouseAdpt(panel_3_3_1_1));
@@ -256,6 +279,7 @@ public class AppMainFrame extends JFrame {
 		importPane.setVisible(false);
 		addStudentPane.setVisible(false);
 		searchPane.setVisible(false);
+		moyennesPane.setVisible(false);
 		panel.setVisible(true);
 	}
 
