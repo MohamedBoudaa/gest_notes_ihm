@@ -119,7 +119,7 @@ public class MoyennesPane extends JPanel{
 		searchList = null;
 		searchManager = new SearchManagerImpl();
 
-		setSize(1003, 769);
+		setSize(1003, 660);
 		setLayout(null);
 
 		JPanel panSearch = new JPanel();
@@ -163,12 +163,12 @@ public class MoyennesPane extends JPanel{
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "R\u00E9sultats de calcule des moyennes", TitledBorder.LEADING, TitledBorder.TOP,
 				null, UIManager.getColor("CheckBox.focus")));
-		panel_1.setBounds(10, 339, 983, 364);
+		panel_1.setBounds(10, 339, 983, 310);
 		add(panel_1);
 		panel_1.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 32, 963, 321);
+		scrollPane.setBounds(10, 32, 963, 267);
 		panel_1.add(scrollPane);
 
 		Object[] columns = { "CNE", "Nom", "Prenom", "Note finale", "Classement","Afficher details" };

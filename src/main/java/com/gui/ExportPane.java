@@ -38,13 +38,13 @@ public class ExportPane extends JPanel {
 	 * Create the panel.
 	 */
 	public ExportPane() {
-		setSize(1003, 769);
+		setBounds(0, 0, 1003, 660);
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Exportation des notes ",
 				TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("CheckBox.focus")));
-		panel.setBounds(224, 171, 462, 404);
+		panel.setBounds(224, 146, 462, 404);
 		add(panel);
 		panel.setLayout(null);
 		

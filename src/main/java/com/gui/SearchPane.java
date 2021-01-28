@@ -116,11 +116,11 @@ public class SearchPane extends JPanel {
 		searchList = null;
 		searchManager = new SearchManagerImpl();
 
-		setSize(1003, 769);
+		setSize(1003, 660);
 		setLayout(null);
 
 		JPanel panSearch = new JPanel();
-		panSearch.setBounds(10, 56, 547, 281);
+		panSearch.setBounds(10, 26, 547, 281);
 		panSearch.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Recherche des \u00E9tudiants",
 				TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("CheckBox.focus")));
 		panSearch.setLayout(null);
@@ -194,7 +194,7 @@ public class SearchPane extends JPanel {
 		
 
 		panel = new JPanel();
-		panel.setBounds(567, 56, 426, 281);
+		panel.setBounds(567, 26, 426, 281);
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informations",
 				TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("CheckBox.focus")));
 		add(panel);
@@ -206,12 +206,12 @@ public class SearchPane extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "R\u00E9sultats de recherche", TitledBorder.LEADING, TitledBorder.TOP,
 				null, UIManager.getColor("CheckBox.focus")));
-		panel_1.setBounds(10, 348, 983, 410);
+		panel_1.setBounds(10, 318, 983, 331);
 		add(panel_1);
 		panel_1.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 32, 963, 367);
+		scrollPane.setBounds(10, 32, 963, 293);
 		panel_1.add(scrollPane);
 
 		Object[] columns = { "CNE", "Nom", "Prenom", "Niveau", "CIN","Afficher details" };

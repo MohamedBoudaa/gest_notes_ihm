@@ -61,7 +61,7 @@ public class AppMainFrame extends JFrame {
 	public AppMainFrame() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 50, 1256, 800);
+		setBounds(100, 50, 1256, 700);
 		setLocationRelativeTo(null); // centrer sur l ecrant
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -103,11 +103,12 @@ public class AppMainFrame extends JFrame {
 		});
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(251, 29, 1003, 769);
+		panel_1.setBounds(251, 29, 1003, 660);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
 		homePane = new HomePane();
+		homePane.setBounds(0, 0, 1003, 661);
 		panel_1.add(homePane);
 		searchPane = new SearchPane();
 		panel_1.add(searchPane);
@@ -123,7 +124,7 @@ public class AppMainFrame extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 72, 141));
-		panel.setBounds(2, 2, 241, 796);
+		panel.setBounds(2, 2, 241, 698);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -256,7 +257,7 @@ public class AppMainFrame extends JFrame {
 		panel_3_3_1_1.setLayout(null);
 		panel_3_3_1_1.addMouseListener(new PanelBtnMouseAdpt(panel_3_3_1_1));
 		panel_3_3_1_1.setBackground(new Color(0, 82, 151));
-		panel_3_3_1_1.setBounds(0, 716, 241, 69);
+		panel_3_3_1_1.setBounds(0, 616, 241, 69);
 		panel.add(panel_3_3_1_1);
 
 		JLabel lblDconnexion = new JLabel("D\u00E9connexion");

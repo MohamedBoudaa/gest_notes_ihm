@@ -7,6 +7,15 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 import javax.swing.SwingConstants;
 
 public class HomePane extends JPanel {
@@ -15,8 +24,9 @@ public class HomePane extends JPanel {
 	 * Create the panel.
 	 */
 	public HomePane() {
+		
 
-		setSize(1003,769);
+		setBounds(0, 0, 1003, 661);
 		setLayout(null);
 		
 		JLabel lblWelcom = new JLabel("Bienvenue sur l'application de gestion des notes");
@@ -24,44 +34,23 @@ public class HomePane extends JPanel {
 		lblWelcom.setBounds(40, 24, 685, 83);
 		add(lblWelcom);
 		
-		String desc = 
-			    "<html><p>This is a Description , This is a Description , This is a Description , </p>"
-			    + "<p>This is a Description , This is a Description , This is a Description </p>"
-			    + "<p>This is a Description , This is a Description , This is a Description </p>"
-			    + "<p>This is a Description , This is a Description , This is a Description </p></html>";
-		String guide = "<html>This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "<br>This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "<br>This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "<br>This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide "
-				+ "This is a guide This is a guide This is a guide This is a guide This is a guide This is a guide </html>";
-		JLabel lblNewLabel = new JLabel(desc);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setVerticalTextPosition(SwingConstants.TOP);
-		lblNewLabel.setVerticalAlignment(SwingConstants.TOP);
-		lblNewLabel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel.setBounds(29, 102, 415, 199);
-		add(lblNewLabel);
+		DefaultCategoryDataset dcd = new DefaultCategoryDataset();
+		dcd.setValue(78, "marks", "toto");
+		dcd.setValue(18, "marks", "bobo");
+		dcd.setValue(58, "marks", "soso");
 		
-		JLabel lblNewLabel_1 = new JLabel(guide);
-		lblNewLabel_1.setVerticalTextPosition(SwingConstants.TOP);
-		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		lblNewLabel_1.setBounds(494, 102, 431, 620);
-		add(lblNewLabel_1);
+		JFreeChart jchart =  ChartFactory.createBarChart3D("Statistiques générales", null, "test", dcd, PlotOrientation.VERTICAL,true,true,false);
+	
+		CategoryPlot plot = jchart.getCategoryPlot();
 		
+		plot.setRangeGridlinePaint(Color.black);
+		
+		ChartPanel chartPan = new ChartPanel(jchart,true);
+		chartPan.setLocation(40, 102);
+		chartPan.setVisible(true);
+		
+		chartPan.setSize(760,420);
+		add(chartPan);
 		setVisible(true);
 		
 	}

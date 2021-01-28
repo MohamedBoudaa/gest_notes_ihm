@@ -219,3 +219,7 @@ line 1:210: expecting EOF, found ')'
 2021-01-24 13:58:31,028 : ERROR [SqlExceptionHelper] :  Could not connect to address=(host=localhost)(port=3306)(type=master) : Socket fail to connect to host:localhost, port:3306. Connection refused: connect
 2021-01-24 22:31:59,229 : ERROR [SqlExceptionHelper] :  Could not connect to address=(host=localhost)(port=3306)(type=master) : Socket fail to connect to host:localhost, port:3306. Connection refused: connect
 2021-01-25 11:53:18,673 : ERROR [SqlExceptionHelper] :  Could not connect to address=(host=localhost)(port=3306)(type=master) : Socket fail to connect to host:localhost, port:3306. Connection refused: connect
+2021-01-27 13:48:29,249 : ERROR [SqlExceptionHelper] :  (conn=141) Unknown column 'Infinity' in 'field list'
+2021-01-27 13:48:29,262 : ERROR [ExceptionMapperStandardImpl] :  HHH000346: Error during managed flush [org.hibernate.exception.SQLGrammarException: could not execute statement]
+2021-01-27 13:48:30,355 : ERROR [SqlExceptionHelper] :  (conn=141) Unknown column 'Infinity' in 'field list'
+2021-01-27 13:48:30,356 : ERROR [ExceptionMapperStandardImpl] :  HHH000346: Error during managed flush [org.hibernate.exception.SQLGrammarException: could not execute statement]

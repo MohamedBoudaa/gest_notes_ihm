@@ -47,12 +47,12 @@ public class ImportPane extends JPanel {
 	 */
 	public ImportPane() {
 
-		setSize(1003, 769);
+		setSize(1003, 660);
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "Importation des notes", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(10, 26, 511, 554);
+		panel.setBounds(10, 11, 511, 438);
 		add(panel);
 		panel.setLayout(null);
 		
@@ -75,17 +75,17 @@ public class ImportPane extends JPanel {
 		
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(36, 130, 447, 155);
+		panel_2.setBounds(36, 130, 447, 111);
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Module S\u00E9l\u00E9ctionn\u00E9 ");
-		lblNewLabel.setBounds(36, 311, 135, 36);
+		lblNewLabel.setBounds(36, 252, 135, 36);
 		panel.add(lblNewLabel);
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 11, 447, 133);
+		scrollPane.setBounds(0, 11, 447, 89);
 		panel_2.add(scrollPane);
 
 		
@@ -152,27 +152,27 @@ public class ImportPane extends JPanel {
 		
 		
 		JButton fileChoserBtn = new JButton("Choisir fichier");
-		fileChoserBtn.setBounds(36, 378, 135, 31);
+		fileChoserBtn.setBounds(36, 319, 135, 31);
 		panel.add(fileChoserBtn);
 		
 		selectedModule = new JTextField();
-		selectedModule.setBounds(192, 311, 291, 36);
+		selectedModule.setBounds(192, 252, 291, 36);
 		selectedModule.setEditable(false);
 		panel.add(selectedModule);
 		selectedModule.setColumns(10);
 		
 		JButton importBtn = new JButton("Importer");
-		importBtn.setBounds(357, 496, 126, 34);
+		importBtn.setBounds(357, 381, 126, 34);
 		panel.add(importBtn);
 		
 		textField_1 = new JTextField();
 		textField_1.setEditable(false);
 		textField_1.setColumns(10);
-		textField_1.setBounds(192, 375, 291, 36);
+		textField_1.setBounds(192, 316, 291, 36);
 		panel.add(textField_1);
 		
 		JLabel lblYear = new JLabel("Ann\u00E9e");
-		lblYear.setBounds(36, 439, 135, 36);
+		lblYear.setBounds(36, 380, 135, 36);
 		panel.add(lblYear);
 		
 		JComboBox comboBox = new JComboBox();
@@ -182,27 +182,30 @@ public class ImportPane extends JPanel {
 			years[i] = String.valueOf(k);
 		}
 		comboBox.setModel(new DefaultComboBoxModel(years));
-		comboBox.setBounds(192, 439, 291, 36);
+		comboBox.setBounds(192, 380, 145, 36);
 		comboBox.setSelectedItem(years[12]);
 		panel.add(comboBox);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "Guide d'utilisation", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(550, 26, 443, 554);
+		panel_1.setBounds(550, 11, 443, 438);
 		add(panel_1);
 		panel_1.setLayout(null);
 		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(10, 26, 423, 400);
+		panel_1.add(scrollPane_2);
+		
 		JTextPane guideTextPane = new JTextPane();
+		scrollPane_2.setViewportView(guideTextPane);
 		guideTextPane.setText("Bienvenue dans le guide d'utilisation de l'outil d'importation des notes.\r\n\r\n1-Type du fichier : \r\n\r\n l'importation des notes se fait \u00E0 partir d'un fichier .csv\r\n\r\n2-Syntaxe :\r\n\r\n les donn\u00E9es dans le fichier doivent avoir la forme suivate :\r\n\r\nCNE_Etudiant,note\r\nCNE_Etudiant2,note2\r\n.. , ..\r\n\r\nle fichier doit contenir tous les \u00E9tudiants inscrits au module ainsi que tous les \u00E9tudiants du niveau concern\u00E9. \r\n\r\nSi un \u00E9tudiant est ajourn\u00E9 mais a d\u00E9j\u00E0 valid\u00E9 le module, il doit etre pr\u00E9sent dans la liste et \u00E0 la place de la note on doit y mettre le caract\u00E8re : #\r\n\r\nLes \u00E9tudiant ajourn\u00E9s ayant des modules supplimentaire d'un autre niveau\r\ndoivent etre \u00E0 la fin de la liste et leur CNE doit commencer par # comme suivant\r\n\r\n#CNE_Etudiant,note\r\n\r\n4- Exemple : \r\n\r\nS130414250,16.15\r\nZ158020165,13.50\r\nE195198751,17.00\r\nS166554457,#            ----> cet \u00E9tudiant a d\u00E9j\u00E0 valid\u00E9 le module\r\n#S101048247,12.05   ----> cet \u00E9tudiant est ajourn\u00E9 et a ce module comme module \r\n                                            supplimentaire");
-		guideTextPane.setBounds(10, 26, 423, 517);
 		guideTextPane.setEditable(false);
 		guideTextPane.setOpaque(false);
 		guideTextPane.setBackground(new Color(0,0,0,0));
-		panel_1.add(guideTextPane);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(null, "Log", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_3.setBounds(10, 591, 983, 167);
+		panel_3.setBounds(10, 460, 983, 167);
 		add(panel_3);
 		panel_3.setLayout(null);
 		

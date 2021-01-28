@@ -66,13 +66,13 @@ public class AddStudentPane extends JPanel {
 		List<Module> selectedModules = new ArrayList<Module>();
 		List<Module> listModules = new ArrayList<Module>();
 
-		setSize(1003, 769);
+		setBounds(0, 0, 1003, 660);
 		setLayout(null);
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informations Personnelles",
 				TitledBorder.LEADING, TitledBorder.TOP, null, UIManager.getColor("CheckBox.focus")));
-		panel.setBounds(26, 44, 953, 270);
+		panel.setBounds(25, 11, 953, 270);
 		add(panel);
 		panel.setLayout(null);
 
@@ -146,7 +146,7 @@ public class AddStudentPane extends JPanel {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Inscription P\u00E9dagogique",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(26, 325, 953, 356);
+		panel_1.setBounds(25, 281, 953, 290);
 		add(panel_1);
 
 		JButton button_1 = new JButton("New button");
@@ -170,12 +170,12 @@ public class AddStudentPane extends JPanel {
 		panel_1.add(filterBtn);
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(36, 130, 384, 194);
+		panel_2.setBounds(36, 130, 384, 154);
 		panel_1.add(panel_2);
 		panel_2.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 11, 384, 172);
+		scrollPane.setBounds(0, 11, 384, 132);
 		panel_2.add(scrollPane);
 
 		Object[] columns = { "Module", "Niveau", "Sem\u00E8stre" };
@@ -216,11 +216,11 @@ public class AddStudentPane extends JPanel {
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
-		panel_3.setBounds(542, 82, 384, 242);
+		panel_3.setBounds(542, 82, 384, 202);
 		panel_1.add(panel_3);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 11, 364, 220);
+		scrollPane_1.setBounds(10, 11, 364, 180);
 		panel_3.add(scrollPane_1);
 
 		
@@ -249,7 +249,7 @@ public class AddStudentPane extends JPanel {
 		panel_1.add(lblSelectedModules);
 
 		JButton saveEtu = new JButton("Inscrire");
-		saveEtu.setBounds(825, 703, 154, 42);
+		saveEtu.setBounds(823, 582, 154, 42);
 		add(saveEtu);
 
 		filterBtn.addActionListener(new ActionListener() {

@@ -16,7 +16,6 @@ Etudiant Boudaa note : 4
 Etudiant Senhaji note : 2
 Etudiant Bouddoufi note : 2
 Etudiant Andalousi note : 2
-Etudiant S130414254 note : Deja valide
 Etudiant Azarkan note : 2
 Etudiant Aoussar note : 9
 Importation des notes avec succès
