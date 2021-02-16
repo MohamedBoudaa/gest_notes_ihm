@@ -46,7 +46,6 @@ public class AppMainFrame extends JFrame {
 	private JPanel contentPane;
 	private static final String URL_RESOURCES = new String("src/main/java/com/resources/");
 	private static final SearchManagerImpl searchManager = new SearchManagerImpl();
-	private HomePane homePane;
 	private SearchPane searchPane;
 	private AddStudentPane addStudentPane;
 	private ImportPane importPane;
@@ -106,11 +105,8 @@ public class AppMainFrame extends JFrame {
 		panel_1.setBounds(251, 29, 1003, 660);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
-
-		homePane = new HomePane();
-		homePane.setBounds(0, 0, 1003, 661);
-		panel_1.add(homePane);
 		searchPane = new SearchPane();
+		searchPane.setVisible(true);
 		panel_1.add(searchPane);
 		addStudentPane = new AddStudentPane();
 		panel_1.add(addStudentPane);
@@ -139,24 +135,6 @@ public class AppMainFrame extends JFrame {
 		logoLabel.setIcon(icon);
 		panel.add(logoLabel);
 
-		JPanel panel_3 = new JPanel();
-		panel_3.addMouseListener(new PanelBtnMouseAdpt(panel_3) {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				menuClicked(homePane);
-			}
-		});
-		panel_3.setBackground(new Color(0, 82, 151));
-		panel_3.setBounds(0, 195, 241, 69);
-		panel.add(panel_3);
-		panel_3.setLayout(null);
-
-		JLabel lblAccueil = new JLabel("Accueil");
-		lblAccueil.setBounds(59, 11, 172, 47);
-		panel_3.add(lblAccueil);
-		lblAccueil.setForeground(Color.WHITE);
-		lblAccueil.setFont(new Font("Dialog", Font.BOLD, 15));
-
 		JPanel panel_3_1 = new JPanel();
 		panel_3_1.setLayout(null);
 		panel_3_1.addMouseListener(new PanelBtnMouseAdpt(panel_3_1) {
@@ -166,7 +144,7 @@ public class AppMainFrame extends JFrame {
 			}
 		});
 		panel_3_1.setBackground(new Color(0, 82, 151));
-		panel_3_1.setBounds(0, 265, 241, 69);
+		panel_3_1.setBounds(0, 208, 241, 69);
 		panel.add(panel_3_1);
 
 		JLabel lblRecherche = new JLabel("Rechercher");
@@ -184,7 +162,7 @@ public class AppMainFrame extends JFrame {
 			}
 		});
 		panel_3_2.setBackground(new Color(0, 82, 151));
-		panel_3_2.setBounds(0, 335, 241, 69);
+		panel_3_2.setBounds(0, 278, 241, 69);
 		panel.add(panel_3_2);
 
 		JLabel lblAjouter = new JLabel("Ajouter un \u00E9tudiant");
@@ -205,7 +183,7 @@ public class AppMainFrame extends JFrame {
 
 		});
 		panel_3_3.setBackground(new Color(0, 82, 151));
-		panel_3_3.setBounds(0, 405, 241, 69);
+		panel_3_3.setBounds(0, 348, 241, 69);
 		panel.add(panel_3_3);
 
 		JLabel lblImporter = new JLabel("Importer");
@@ -224,7 +202,7 @@ public class AppMainFrame extends JFrame {
 			}
 		});
 		panel_3_3_2.setBackground(new Color(0, 82, 151));
-		panel_3_3_2.setBounds(0, 475, 241, 69);
+		panel_3_3_2.setBounds(0, 418, 241, 69);
 		panel.add(panel_3_3_2);
 
 		JLabel lblcalculerMoyennes = new JLabel("Calculer moyennes\r\n");
@@ -244,7 +222,7 @@ public class AppMainFrame extends JFrame {
 			}
 		});
 		panel_3_3_1.setBackground(new Color(0, 82, 151));
-		panel_3_3_1.setBounds(0, 545, 241, 69);
+		panel_3_3_1.setBounds(0, 488, 241, 69);
 		panel.add(panel_3_3_1);
 
 		JLabel lblExporter = new JLabel("Exporter\r\n");
@@ -257,7 +235,7 @@ public class AppMainFrame extends JFrame {
 		panel_3_3_1_1.setLayout(null);
 		panel_3_3_1_1.addMouseListener(new PanelBtnMouseAdpt(panel_3_3_1_1));
 		panel_3_3_1_1.setBackground(new Color(0, 82, 151));
-		panel_3_3_1_1.setBounds(0, 616, 241, 69);
+		panel_3_3_1_1.setBounds(0, 629, 241, 69);
 		panel.add(panel_3_3_1_1);
 
 		JLabel lblDconnexion = new JLabel("D\u00E9connexion");
@@ -266,6 +244,18 @@ public class AppMainFrame extends JFrame {
 		lblDconnexion.setBounds(59, 11, 172, 47);
 		panel_3_3_1_1.add(lblDconnexion);
 
+		panel_3_3_1_1.addMouseListener(new PanelBtnMouseAdpt(panel_3_3_1_1) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				AppMainFrame.this.dispose();
+				
+				JFrame f = new LoginPannel();
+				f.setVisible(true);
+				
+				
+			}
+		});
+		
 		////////////////////////////////////////////////////////////////////////////////////
 
 		////////////////////////////////////////////////////////////////////////////////////
@@ -275,7 +265,6 @@ public class AppMainFrame extends JFrame {
 	}
 
 	public void menuClicked(JPanel panel) {
-		homePane.setVisible(false);
 		exportPane.setVisible(false);
 		importPane.setVisible(false);
 		addStudentPane.setVisible(false);

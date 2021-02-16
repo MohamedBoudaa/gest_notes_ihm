@@ -109,8 +109,6 @@ public class LoginPannel extends JFrame {
 		pwF.setBorder(UIManager.getBorder("RadioButton.border"));
 		pwF.setBounds(92, 88, 217, 26);
 		panel.add(pwF);
-		btn.setBorder(UIManager.getBorder("MenuBar.border"));
-		btn.setBackground(UIManager.getColor("PasswordField.selectionBackground"));
 		btn.setBounds(209, 135, 100, 23);
 		
 		

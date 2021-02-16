@@ -1,4 +1,4 @@
-Fichier selectionne : C:\Users\Mohamed\Desktop\sup.csv
+Fichier selectionne : C:\Users\Mohamed\Desktop\Notes_Cpp_GI2.csv
 Lecture depuis le fichier ....
 *************Checking module and niveau .... *************
 *************Checking module and niveau has been done successfully ! *************
@@ -10,7 +10,7 @@ Database : S130414253 --  File : S130414253
 Database : S130414254 --  File : S130414254
 Database : S130414257 --  File : S130414257
 **********Checking students list has been done successfully !************
-Verification avec succès !!
+Verification avec succes !!
  Debut de l'importation des notes...
 Etudiant Boudaa note : 4
 Etudiant Senhaji note : 2
@@ -18,4 +18,4 @@ Etudiant Bouddoufi note : 2
 Etudiant Andalousi note : 2
 Etudiant Azarkan note : 2
 Etudiant Aoussar note : 9
-Importation des notes avec succès
+Importation des notes avec succes
